@@ -18,10 +18,21 @@ function createAccount(e){
 			'Access-Control-Allow-Origin': '*'
 
         },
-        body: JSON.stringify({user_name: user_name, email: email, phone_number: phone_number, password: password})
+        body: JSON.stringify({
+            user_name: user_name,
+            email: email,
+            phone_number: phone_number,
+            password: password
+         })
     })
     .then((res) => res.json())
     .then((data) => {
+        if (data.status === 'success'){
         window.location.href = 'index.html';
+        }else{
+        console.log(data);
+        console.log(data.status);
+        alert(data.error_message);
+        }
     });
 }
