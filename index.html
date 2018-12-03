@@ -1,9 +1,9 @@
 <!DOCTYPE html>
+<html>
 <head>
     <title>Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-    <script type="text/javascript" src="assets/js/main.js"></script>
 </head>
 <body class="cover-image">
     <!-- structuring the login page -->
@@ -14,10 +14,10 @@
                     <p>Send your parcels now</p> 
             </div>
         <div class="login-field">
-            <form action="" method="POST">
-                <input type="text" id="username" name="username" placeholder="Username" required="">
-                <input type="password" id="password" name="username" placeholder="Password" required="">
-                <input type="button" value="Login" onclick="Verify()">
+            <form id="login" action="" method="POST">
+                <input type="text" id="user" name="username" placeholder="Username" required="">
+                <input type="password" id="pass" name="username" placeholder="Password" required="">
+                <button id="log" type="submit">Login</button>
             </form>
     
         <p class="down">
@@ -27,7 +27,6 @@
         </div>
     </div>
 </div>
-<!-- <p class="cred">For admin: username = admin password = admin</p>
-<p class="cred">For user: username = user password = user</p> -->
+<script type="text/javascript" src="assets/js/login.js"></script>
 </body>   
 </html>
