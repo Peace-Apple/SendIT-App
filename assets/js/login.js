@@ -32,7 +32,7 @@ function loginUser(e){
                 window.location.href = 'admin.html';
 
             }else{
-                localStorage.setItem("accessToken", token);
+                localStorage.setItem("access_token", token);
                 localStorage.setItem("account_user", admin);
                 window.location.href = 'vieworder.html';
             }
