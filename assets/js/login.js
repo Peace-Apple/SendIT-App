@@ -25,15 +25,13 @@ function loginUser(e){
     .then((data) => {
         let token = data.access_token;
         let admin = data.logged_in_as;
+        localStorage.setItem("accessToken", token);
+        localStorage.setItem("account_user", admin);
         if (data.status === 'success'){
             if (admin === 'Apple'){
-                localStorage.setItem("access_token", token);
-                localStorage.setItem("account_user", admin);
                 window.location.href = 'admin.html';
 
             }else{
-                localStorage.setItem("access_token", token);
-                localStorage.setItem("account_user", admin);
                 window.location.href = 'vieworder.html';
             }
 
