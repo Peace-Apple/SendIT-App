@@ -1,6 +1,8 @@
-document.addEventListener("DOMContentLoaded", userOrders)
-function userOrders(){
-    fetch('http://127.0.0.1:5000/api/v2/users/<int:user_id>/parcels/', {
+document.addEventListener("DOMContentLoaded", userParcels)
+
+function userParcels(user){
+    let user_parcels = user.target.value;
+    fetch('http://127.0.0.1:5000/api/v2/users/<int:user_id>/parcels/'+user_parcels, {
      method: 'GET',
         headers: {
             'Accept': 'application/json, text/plain, */*',
