@@ -1,6 +1,7 @@
-document.addEventListener("DOMContentLoaded", detailedParcel)
+document.getElementById('detail').addEventListener('' , detailedParcel)
+
 function detailedParcel(parcel){
-    let parcel_detail = parcel.parentNode.id;
+    let parcel_detail = parcel.target.value;
     fetch('http://127.0.0.1:5000/api/v2/parcels/'+parcel_detail, {
      method: 'GET',
         headers: {
