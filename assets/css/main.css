@@ -129,6 +129,7 @@ header ul li.active a{
 	
 }
 div.main-content{
+    overflow: auto;
 	border:1px solid silver;
 	position: absolute;
 	margin-top: 120px;
