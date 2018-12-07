@@ -72,15 +72,15 @@ function detailedParcel(parcel_id){
             console.log(response_object.data);
 
             document.getElementById("date").innerHTML = 'Posted At : '+parcel_data.order_date;
-//            document.getElementById("sender").innerHTML = parcel_data.user_name;
-//            document.getElementById("semail").innerHTML = parcel_data.email;
-//            document.getElementById("scontact").innerHTML = parcel_data.phone_number;
-//            document.getElementById("receiver").innerHTML = parcel_data.receivers_name;
-//            document.getElementById("pickup").innerHTML = parcel_data.pickup_location;
-//            document.getElementById("destination").innerHTML = parcel_data.destination;
-//            document.getElementById("weight").innerHTML = parcel_data.weight;
-//            document.getElementById("status").innerHTML = parcel_data.delivery_status;
-//            document.getElementById("presentlocation").innerHTML = parcel_data.present_location;
+            document.getElementById("sender").innerHTML = parcel_data.user_name;
+            document.getElementById("semail").innerHTML = parcel_data.email;
+            document.getElementById("scontact").innerHTML = parcel_data.phone_number;
+            document.getElementById("receiver").innerHTML = parcel_data.receivers_name;
+            document.getElementById("pickup").innerHTML = parcel_data.pickup_location;
+            document.getElementById("destination").innerHTML = parcel_data.destination;
+            document.getElementById("weight").innerHTML = parcel_data.weight;
+            document.getElementById("status").innerHTML = parcel_data.delivery_status;
+            document.getElementById("presentlocation").innerHTML = parcel_data.present_location;
 
 
         } else {
