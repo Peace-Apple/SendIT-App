@@ -19,12 +19,11 @@
             </header></b>
 
             <div class="main-content">
-                <div id="detail">
                 <table>
                     <tr>
                         <td>
                             <div class="admin-content">
-                                
+
                                 <p class="links">
                                     <label><strong id="date"></strong></label>
                                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -32,52 +31,12 @@
                                     &nbsp;&nbsp;&nbsp;&nbsp;
                                     <label><a href="admin.html">Less Detail</a></label>
                                 </p>
-                                <div class="info">
+                                <div id="detail" class="info">
                                     <table>
-                                        <tr>
-                                            <td><b>Senders Name:</b></td>
-                                            <td id="sender"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Senders Email:</b></td>
-                                            <td id="semail"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Senders Contact:</b></td>
-                                            <td id="scontact"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Receivers Name:</b></td>
-                                            <td id="receiver"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Pickup Location</b></td>
-                                            <td id="pickup"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Destination:</b></td>
-                                            <td id="destination"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Weight:</b></td>
-                                            <td id="weight"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Order Date:</b></td>
-                                            <td id="date"></td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Delivery Status:</b></td>
-                                            <td id="status"></td>
-                                            <td class="links"><label onclick="editOrder()"><a href="#">Edit</a></label>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Present Location:</b></td>
-                                            <td id="presentlocation"></td>
-                                            <td class="links"><label onclick="editOrder()"><a href="#">Edit</a></label>
-                                                &nbsp;&nbsp;&nbsp;&nbsp;</td>
-                                        </tr>
+                                        <thead></thead>
+                                        <tbody id="parcel_detail">
+
+                                        </tbody>
                         
                                     </table>
                                 </div>
@@ -92,7 +51,6 @@
                         </td>
                     </tr>
                 </table>
-                </div>
             </div>
     </body>
     <script type="text/javascript" src="assets/js/admin.js"></script>
