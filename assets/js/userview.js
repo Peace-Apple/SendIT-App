@@ -1,8 +1,11 @@
 document.addEventListener("DOMContentLoaded", userParcels)
 
-function userParcels(user){
-    let user_parcels = user.target.value;
-    fetch('http://127.0.0.1:5000/api/v2/users/<int:user_id>/parcels/'+user_parcels, {
+function userParcels(user_id){
+    var payload = JSON.parse(atob(localStorage.getItem('accessToken').split('.')[1]));
+    console.log(payload.identity[0]);
+    var user_id = payload.identity[0];
+
+    fetch(`http://127.0.0.1:5000/api/v2/users/${user_id}/parcels/`, {
      method: 'GET',
         headers: {
             'Accept': 'application/json, text/plain, */*',
@@ -20,24 +23,44 @@ function userParcels(user){
             console.log(response_object);
             console.log(response_object.data);
 
-            let output = '';
+            let output = `
+
+                    <tr id="parcels_head">
+                        <th>Senders Name</th>
+                        <th>Receivers Name</th>
+                        <th>Pickup Location</th>
+                        <th>Destination</th>
+                        <th>Weight</th>
+                        <th>Order Date</th>
+                        <th>Delivery Status</th>
+                        <th>Present Location</th>
+                    </tr>
+
+                `;
 
             for(var i=0; i < response_object.data.length; i++){
-                output +=
-                     "<tr>"+
-                        "<td>"+
-                            '<div class="order-content">'+
-                                "<h3>PARCEL</h3>"+
-                                '<p class="links">'+
-                                    "<label><strong>"+
-                                    "Posted At : </strong>'+response_object.data[i].order_date+'</label>"+
-                                    "&nbsp;&nbsp;&nbsp;&nbsp;"+
-                                    '<label><a href="detail.html">More Detail</a></label>'+
-                                "</p>"+
-                            "</div>"+
+                output += `
 
-                        "</td>"+
-                        "</tr>";
+                    <tr id="parcels">
+                            <td>${response_object.data[i].user_name}</td>
+                            <td>${response_object.data[i].receivers_name}</td>
+                            <td>${response_object.data[i].pickup_location}</td>
+                            <td>${response_object.data[i].destination}
+                            <p class="links">
+                                <label onclick="editDestination()"><a href="#">Edit</a></label>
+                             </p>
+                            </td>
+                            <td>${response_object.data[i].weight}</td>
+                            <td>${response_object.data[i].order_date}</td>
+                            <td>${response_object.data[i].delivery_status}
+                            <p class="links">
+                                <label onclick="cancelParcel()"><a href="#">Cancel</a></label>
+                             </p>
+                            </td>
+                            <td>${response_object.data[i].present_location}</td>
+                      </td>
+
+                    </tr>`;
             }
 
             document.getElementById('user_parcels').innerHTML = output;
@@ -45,7 +68,7 @@ function userParcels(user){
         } else {
             console.log(response_object.message);
         }
-    })
-    }
+    });
+}
 
 
