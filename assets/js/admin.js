@@ -17,26 +17,51 @@ method: 'GET',
         console.log(response_object);
         console.log(response_object.data);
 
-        let output = '';
+        let output = `
+
+                <tr id="parcels_head">
+                    <th>ID</th>
+                    <th>Sender</th>
+                    <th>Senders Email</th>
+                    <th>Senders Contact</th>
+                    <th>Receiver</th>
+                    <th>Pickup Location</th>
+                    <th>Destination</th>
+                    <th>Weight</th>
+                    <th>Order Date</th>
+                    <th>Delivery Status</th>
+                    <th>Present Location</th>
+                </tr>
+
+            `;
 
         for(var i=0; i < response_object.data.length; i++){
-            output += `<tr>
-                    <td>
-                        <div class="order-content">
-                            <h3>ORDER ${response_object.data[i].parcel_id}</h3>
-                            <p class="links">
-                                <label id="date"><strong>
-                                Posted At: ${response_object.data[i].order_date}</strong></label>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <label><button onclick = "singleParcel(${response_object.data[i].parcel_id});"><a href="admindetail.html">More Detail</a></button></label>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <label><button onclick="deleteOrder()"><a href="#">Delete</a></button></label>
-                            </p>
+            output += `
 
-                        </div>
-                    </td>
-                  </tr>`;
-        };
+                <tr id="parcels">
+                        <td>${response_object.data[i].parcel_id}</td>
+                        <td>${response_object.data[i].user_name}</td>
+                        <td>${response_object.data[i].email}</td>
+                        <td>${response_object.data[i].phone_number}</td>
+                        <td>${response_object.data[i].receivers_name}</td>
+                        <td>${response_object.data[i].pickup_location}</td>
+                        <td>${response_object.data[i].destination}</td>
+                        <td>${response_object.data[i].weight}</td>
+                        <td>${response_object.data[i].order_date}</td>
+                        <td>${response_object.data[i].delivery_status}
+                        <p class="links">
+                            <label><a href ='admindetail.html?parcel=${response_object.data[i].parcel_id}'>Edit</a></label>
+                         </p>
+                        </td>
+                        <td>${response_object.data[i].present_location}
+                        <p class="links">
+                            <label><a href ='admindetail.html?parcel=${response_object.data[i].parcel_id}'>Edit</a></label>
+                         </p>
+                        </td>
+                  </td>
+
+                </tr>`;
+        }
 
         document.getElementById('parcelOrders').innerHTML = output;
 
