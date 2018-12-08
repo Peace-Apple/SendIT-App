@@ -4,6 +4,10 @@
     text-decoration: none;
     font-weight: bold;
 }
+.links label button{
+    color: white;
+    text-decoration: none;
+}
 .links label:hover a{
     color: black;
 }
