@@ -52,9 +52,9 @@ if(/detail.html/.test(window.location.href)){
                     </td>
                     <td>${response_object.data.weight}</td>
                     <td>${response_object.data.order_date}</td>
-                    <td>${response_object.data.delivery_status}
+                    <td id="parcelCancel">${response_object.data.delivery_status}
                     <p class="links">
-                        <label><button>Edit</button></label>
+                        <label><button onclick = "cancelParcel();">Cancel</button></label>
                      </p>
                     </td>
                     <td>${response_object.data.present_location}</td>
@@ -95,6 +95,40 @@ function updateDestination(){
         console.log(response_object);
         if(response_object.message === 'Destination has been updated successfully'){
             document.getElementById('destinationUpdate').innerHTML = new_destination
+            alert(response_object.message)
+        }
+        else{
+            alert(response_object.error_message)
+        }
+
+    })
+}
+
+function cancelParcel(){
+    let parcel_url = window.location.href
+    let url = new URL(parcel_url)
+    let parcel_id = url.searchParams.get("parcel")
+    var cancel_parcel = "cancelled"
+    console.log(parcel_id);
+
+    fetch('http://127.0.0.1:5000/api/v2/parcels/'+parcel_id+'/cancel/', {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+        cache: 'no-cache',
+        body: JSON.stringify({
+            delivery_status: cancel_parcel
+        })
+
+    })
+    .then((res) => res.json())
+    .then((response_object) => {
+        console.log(response_object);
+        if(response_object.message === 'Parcel delivery order has been cancelled successfully'){
+            document.getElementById('parcelCancel').innerHTML = cancel_parcel
             alert(response_object.message)
         }
         else{
