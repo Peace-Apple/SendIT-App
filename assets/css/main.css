@@ -140,6 +140,19 @@ div.main-content{
 	margin-right: 100px;
 	background-color: antiquewhite;
 }
+div.main-content p button{
+    border: 1px solid maroon;
+	padding: 8px 10px;
+	border-radius: 5px;
+	width: 10%;
+	background-color: #05386B;
+}
+div.main-content p button a{
+    color: white;
+    text-decoration:none;
+
+}
+
 
 @media (min-width: 760px) and (max-width: 1024px){
 	div.login-main{
