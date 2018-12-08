@@ -5,53 +5,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" type="text/css" href="assets/css/main.css">
         <link rel="stylesheet" type="text/css" href="assets/css/admin.css">
-        <script type="text/javascript" src="assets/js/main.js"></script>
+        <link rel="stylesheet" type="text/css" href="assets/css/vieworder.css">
     </head>
     <body class="main-image">
         <b><header>
         <h2>SEND-IT</h2>
             <div>
                 <ul>
-                    <li class="active"a href="admin.html">View Orders</a></li>
+                    <li class="active"><a href="admin.html">Orders Made</a></li>
                     <li><a href="index.html">Logout</a></li>
                 </ul>
             </div>
             </header></b>
 
             <div class="main-content">
-                <table>
-                    <tr>
-                        <td>
-                            <div class="admin-content">
+                        <h3>View your parcel</h3>
+                    <div>
+                        <table id="parcelDetail">
 
-                                <p class="links">
-                                    <label><strong id="date"></strong></label>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label onclick="deleteOrder()"><a href="#">Delete</a></label>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;
-                                    <label><a href="admin.html">Less Detail</a></label>
-                                </p>
-                                <div id="detail" class="info">
-                                    <table>
-                                        <thead></thead>
-                                        <tbody id="parcel_detail">
+                        </table>
 
-                                        </tbody>
-                        
-                                    </table>
-                                </div>
-                    
-                            </div>
-                        </td>
-                        <td>
-                            <!--main image -->
-                            <div class="img-info">
-                                <img src="assets/images/im3.png"><br>
-                            </div>
-                        </td>
-                    </tr>
-                </table>
-            </div>
+                    </div>
+                </div>
     </body>
-    <script type="text/javascript" src="assets/js/admin.js"></script>
+    <script type="text/javascript" src="assets/js/adminsingle.js"></script>
 </html>
