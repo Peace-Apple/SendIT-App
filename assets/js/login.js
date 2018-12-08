@@ -15,6 +15,7 @@ function loginUser(e){
 			'Access-Control-Allow-Origin': '*'
 
         },
+        cache: 'no-cache',
         body: JSON.stringify({
             user_name: user_name,
             password: password
