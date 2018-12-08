@@ -42,6 +42,10 @@
 .links label:hover a{
     color: black;
 }
+.links label button{
+    color: white;
+    text-decoration: none;
+}
 .detail{
     padding: 7px;
 }
