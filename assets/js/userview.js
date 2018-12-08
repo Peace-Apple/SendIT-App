@@ -56,7 +56,7 @@ function userParcels(user_id){
                             <td>${response_object.data[i].order_date}</td>
                             <td>${response_object.data[i].delivery_status}
                             <p class="links">
-                                <label onclick="cancelParcel()"><a href="#">Cancel</a></label>
+                                <label><a href='detail.html?parcel=${response_object.data[i].parcel_id}'>Cancel</a></label>
                              </p>
                             </td>
                             <td>${response_object.data[i].present_location}</td>
@@ -72,5 +72,6 @@ function userParcels(user_id){
         }
     });
 }
+
 
 
