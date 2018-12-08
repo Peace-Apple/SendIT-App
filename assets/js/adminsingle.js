@@ -18,7 +18,7 @@ if(/admindetail.html/.test(window.location.href)){
     .then((res) => res.json())
     .then((response_object) => {
     if (response_object.message === 'Successfully got one parcel delivery order'){
-        console.log(response_object);
+        console.log(response_object.data);
         console.log(response_object.data.parcel_id);
 
         let output = `
@@ -50,14 +50,14 @@ if(/admindetail.html/.test(window.location.href)){
                     <td>${response_object.data.destination}</td>
                     <td>${response_object.data.weight}</td>
                     <td>${response_object.data.order_date}</td>
-                    <td>${response_object.data.delivery_status}
+                    <td id="statusUpdate">${response_object.data.delivery_status}
                     <p class="links">
-                        <label><a href="" onclick = "updateStatus();">Edit</a></label>
+                        <label><button onclick = "updateStatus();">Edit</button></label>
                      </p>
                     </td>
-                    <td>${response_object.data.present_location}
+                    <td id="locationUpdate">${response_object.data.present_location}
                     <p class="links">
-                        <label><a href="" onclick = "updatePresentLocation();">Edit</a></label>
+                        <label><button onclick = "updatePresentLocation();">Edit</button></label>
                      </p>
                     </td>
               </td>
@@ -94,8 +94,9 @@ function updateStatus(){
     .then((res) => res.json())
     .then((response_object) => {
         console.log(response_object);
+
         if(response_object.message === 'Status has been updated successfully'){
-            document.getElementById('updateParcel').innerHTML = new_status
+            document.getElementById('statusUpdate').innerHTML = new_status
             alert(response_object.message)
         }
         else{
@@ -129,10 +130,11 @@ function updatePresentLocation(){
     .then((response_object) => {
         console.log(response_object);
         if(response_object.message === 'Present location has been updated successfully'){
-            document.getElementById('updateLocation').innerHTML = new_location
+            document.getElementById('locationUpdate').innerHTML = new_location
             alert(response_object.message)
         }
         else{
+            alert(response_object.error_message)
         }
 
     })
