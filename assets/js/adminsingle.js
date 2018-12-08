@@ -57,7 +57,7 @@ if(/admindetail.html/.test(window.location.href)){
                     </td>
                     <td>${response_object.data.present_location}
                     <p class="links">
-                        <label><a>Edit</a></label>
+                        <label><a href="" onclick = "updatePresentLocation();">Edit</a></label>
                      </p>
                     </td>
               </td>
@@ -105,4 +105,36 @@ function updateStatus(){
     })
 }
 
+function updatePresentLocation(){
+    let parcel_url = window.location.href
+    let url = new URL(parcel_url)
+    let parcel_id = url.searchParams.get("parcel")
+    var new_location = window.prompt("Enter new location")
+    console.log(parcel_id);
+
+    fetch('http://127.0.0.1:5000/api/v2/parcels/'+parcel_id+'/presentLocation/', {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+        cache: 'no-cache',
+        body: JSON.stringify({
+            present_location: new_location
+        })
+
+    })
+    .then((res) => res.json())
+    .then((response_object) => {
+        console.log(response_object);
+        if(response_object.message === 'Present location has been updated successfully'){
+            document.getElementById('updateLocation').innerHTML = new_location
+            alert(response_object.message)
+        }
+        else{
+        }
+
+    })
+}
 
