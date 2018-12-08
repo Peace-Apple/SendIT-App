@@ -18,6 +18,7 @@ function createAccount(e){
 			'Access-Control-Allow-Origin': '*'
 
         },
+        cache: 'no-cache',
         body: JSON.stringify({
             user_name: user_name,
             email: email,
