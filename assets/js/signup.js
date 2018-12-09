@@ -29,10 +29,10 @@ function createAccount(e){
     .then((res) => res.json())
     .then((data) => {
         if (data.status === 'success'){
+        alert(data.message);
         window.location.href = 'index.html';
         }else{
         console.log(data);
-        console.log(data.status);
         alert(data.error_message);
         }
     });
