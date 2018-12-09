@@ -32,7 +32,9 @@ function makeOrder(e){
         console.log(response_object);
         if(message === 'Successfully posted a parcel delivery order'){
             alert(message);
+            window.location.href = 'vieworder.html';
         }else{
+            alert(response_object.error_message);
         }
      });
 
