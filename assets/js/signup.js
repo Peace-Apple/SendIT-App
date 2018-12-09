@@ -27,13 +27,13 @@ function createAccount(e){
          })
     })
     .then((res) => res.json())
-    .then((data) => {
-        if (data.status === 'success'){
-        alert(data.message);
+    .then((response_object) => {
+        if (response_object.status === 'success'){
+        alert(response_object.message);
         window.location.href = 'index.html';
         }else{
-        console.log(data);
-        alert(data.error_message);
+        console.log(response_object);
+        alert(response_object.error_message);
         }
     });
 }
