@@ -70,7 +70,14 @@
     width: 480px;
     height: 450px;
 }
-
+div.user_profile div{
+    float: right;
+    margin-right: 830px;
+}
+div.user_profile img{
+    height: 100px;
+    width: 100px;
+}
 @media (min-width: 760px) and (max-width: 1024px){
 	
 }
