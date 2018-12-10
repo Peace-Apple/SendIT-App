@@ -26,7 +26,6 @@ if(/detail.html/.test(window.location.href)){
         let output = `
 
             <tr id="parcels_head">
-                <th>ID</th>
                 <th>Senders Name</th>
                 <th>Receivers Name</th>
                 <th>Pickup Location</th>
@@ -41,7 +40,6 @@ if(/detail.html/.test(window.location.href)){
             output += `
 
                 <tr id="parcels">
-                    <td>${response_object.data.parcel_id}</td>
                     <td>${response_object.data.user_name}</td>
                     <td>${response_object.data.receivers_name}</td>
                     <td>${response_object.data.pickup_location}</td>
