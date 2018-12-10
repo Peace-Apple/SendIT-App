@@ -24,7 +24,7 @@ function userParcels(user_id){
             console.log(response_object.data);
 
             let output = `
-
+                <table width="99%">
                     <tr id="parcels_head">
                         <th>ID</th>
                         <th>Sender</th>
@@ -65,7 +65,7 @@ function userParcels(user_id){
                     </tr>`;
             }
 
-            document.getElementById('user_parcels').innerHTML = output;
+            document.getElementById('user_parcels').innerHTML = output += "</table>";
 
         } else {
             console.log(response_object.message);
