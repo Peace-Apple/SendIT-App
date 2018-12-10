@@ -21,12 +21,20 @@ function userParcels(user_id){
         if (response_object.message === 'Successfully got all orders belonging to user'){
             let order_data = response_object.data;
             console.log(response_object);
-            console.log(response_object.data);
+            console.log(response_object.data[0]['user_name']);
 
             let output = `
+                <div class="user_profile">
+                    <img src="assets/images/avatar.jpg">
+                    <div>
+                        <h2>${response_object.data[0]['user_name']}</h2>
+                        <p><b>Email:</b> ${response_object.data[0]['email']}</p>
+                        <p><b>Contact:</b> ${response_object.data[0]['phone_number']}</p>
+                    </div>
+
+                </div>
                 <table width="99%">
                     <tr id="parcels_head">
-                        <th>ID</th>
                         <th>Sender</th>
                         <th>Receiver</th>
                         <th>Pickup Location</th>
@@ -43,7 +51,6 @@ function userParcels(user_id){
                 output += `
 
                     <tr id="parcels">
-                            <td>${response_object.data[i].parcel_id}</td>
                             <td>${response_object.data[i].user_name}</td>
                             <td>${response_object.data[i].receivers_name}</td>
                             <td>${response_object.data[i].pickup_location}</td>
