@@ -23,8 +23,8 @@ function userParcels(user_id){
              <img src="assets/images/avatar.jpg">
              <div>
                 <h2>${payload.identity[1]}</h2>
-                <p><b>Email:</b>${payload.identity[2]}</p>
-                <p><b>Contact:${payload.identity[3]}</p>
+                <p><b>Email:</b> ${payload.identity[2]}</p>
+                <p><b>Contact:</b> ${payload.identity[3]}</p>
              </div>
 
         `;
