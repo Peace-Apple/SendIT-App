@@ -29,7 +29,7 @@ function loginUser(e){
         localStorage.setItem("accessToken", token);
         localStorage.setItem("account_user", admin);
         if (data.status === 'success'){
-            if (admin === 'Apple'){
+            if (admin === 'Admin'){
                 window.location.href = 'admin.html';
 
             }else{
