@@ -27,7 +27,6 @@ function loginUser(e){
         let token = data.access_token;
         let admin = data.logged_in_as;
         localStorage.setItem("accessToken", token);
-        localStorage.setItem("account_user", admin);
         if (data.status === 'success'){
             if (admin === 'Admin'){
                 window.location.href = 'admin.html';
