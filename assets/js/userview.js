@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", userParcels)
 function userParcels(user_id){
     var payload = JSON.parse(atob(localStorage.getItem('accessToken').split('.')[1]));
     console.log(payload.identity[0]);
+    console.log(payload)
     var user_id = payload.identity[0];
 
     fetch(`http://127.0.0.1:5000/api/v2/users/${user_id}/parcels/`, {
@@ -18,21 +19,23 @@ function userParcels(user_id){
 
     .then((res) => res.json())
     .then((response_object) => {
+        let profile = `
+             <img src="assets/images/avatar.jpg">
+             <div>
+                <h2>${payload.identity[1]}</h2>
+                <p><b>Email:</b>${payload.identity[2]}</p>
+                <p><b>Contact:${payload.identity[3]}</p>
+             </div>
+
+        `;
+        document.getElementById('my_profile').innerHTML = profile
+
         if (response_object.message === 'Successfully got all orders belonging to user'){
             let order_data = response_object.data;
             console.log(response_object);
             console.log(response_object.data[0]['user_name']);
 
             let output = `
-                <div class="user_profile">
-                    <img src="assets/images/avatar.jpg">
-                    <div>
-                        <h2>${response_object.data[0]['user_name']}</h2>
-                        <p><b>Email:</b> ${response_object.data[0]['email']}</p>
-                        <p><b>Contact:</b> ${response_object.data[0]['phone_number']}</p>
-                    </div>
-
-                </div>
                 <table width="99%">
                     <tr id="parcels_head">
                         <th>Sender</th>
