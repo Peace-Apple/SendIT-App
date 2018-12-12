@@ -31,6 +31,9 @@ method: 'GET',
                     <th>Order Date</th>
                     <th>Delivery Status</th>
                     <th>Present Location</th>
+                    <th>Edit Status</th>
+                    <th>Edit Present Location</th>
+                    <th>View Detail</th>
                 </tr>
 
             `;
@@ -48,16 +51,17 @@ method: 'GET',
                         <td>${response_object.data[i].destination}</td>
                         <td>${response_object.data[i].weight}</td>
                         <td>${response_object.data[i].order_date}</td>
-                        <td>${response_object.data[i].delivery_status}
-                        <p class="links">
+                        <td id="statusUpdate">${response_object.data[i].delivery_status}</td>
+                        <td id="locationUpdate">${response_object.data[i].present_location}</td>
+                        <td><p class="links">
+                        <label><button onclick = "updateStatus(${response_object.data[i].parcel_id});">Edit</button></label>
+                        </p></td>
+                        <td><p class="links">
+                        <label><button onclick = "updatePresentLocation(${response_object.data[i].parcel_id});">Edit</button></label>
+                        </p></td>
+                        <td><p class="links">
                             <label><a href ='admindetail.html?parcel=${response_object.data[i].parcel_id}'>Edit</a></label>
-                         </p>
-                        </td>
-                        <td>${response_object.data[i].present_location}
-                        <p class="links">
-                            <label><a href ='admindetail.html?parcel=${response_object.data[i].parcel_id}'>Edit</a></label>
-                         </p>
-                        </td>
+                        </p></td>
                   </td>
 
                 </tr>`;
@@ -69,6 +73,67 @@ method: 'GET',
         console.log(response_object.message);
     }
 });
+
+function updateStatus(parcel_id){
+    var new_status = window.prompt("Enter new status")
+
+    fetch(`http://127.0.0.1:5000/api/v2/parcels/${parcel_id}/status/`, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+        cache: 'no-cache',
+        body: JSON.stringify({
+            delivery_status: new_status
+        })
+
+    })
+    .then((res) => res.json())
+    .then((response_object) => {
+        console.log(response_object);
+
+        if(response_object.message === 'Status has been updated successfully'){
+            document.getElementById('statusUpdate').innerHTML = new_status
+            alert(response_object.message)
+        }
+        else{
+            alert(response_object.error_message)
+        }
+
+    })
+}
+
+function updatePresentLocation(parcel_id){
+    var new_location = window.prompt("Enter new location")
+
+    fetch(`http://127.0.0.1:5000/api/v2/parcels/${parcel_id}/presentLocation/`, {
+        method: 'PUT',
+        headers: {
+            'Accept': 'application/json',
+            'Content-type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+        },
+        cache: 'no-cache',
+        body: JSON.stringify({
+            present_location: new_location
+        })
+
+    })
+    .then((res) => res.json())
+    .then((response_object) => {
+        console.log(response_object);
+        if(response_object.message === 'Present location has been updated successfully'){
+            document.getElementById('locationUpdate').innerHTML = new_location
+            alert(response_object.message)
+        }
+        else{
+            alert(response_object.error_message)
+        }
+
+    })
+}
 
 
 
