@@ -60,7 +60,7 @@ method: 'GET',
                         <label><button onclick = "updatePresentLocation(${response_object.data[i].parcel_id});">Edit</button></label>
                         </p></td>
                         <td><p class="links">
-                            <label><a href ='admindetail.html?parcel=${response_object.data[i].parcel_id}'>Edit</a></label>
+                            <label><a href ='admindetail.html?parcel=${response_object.data[i].parcel_id}'>View</a></label>
                         </p></td>
                   </td>
 
