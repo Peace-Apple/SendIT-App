@@ -50,18 +50,8 @@ if(/admindetail.html/.test(window.location.href)){
                     <td>${response_object.data.destination}</td>
                     <td>${response_object.data.weight}</td>
                     <td>${response_object.data.order_date}</td>
-                    <td id="statusUpdate">${response_object.data.delivery_status}
-                    <p class="links">
-                        <label><button onclick = "updateStatus();">Edit</button></label>
-                     </p>
-                    </td>
-                    <td id="locationUpdate">${response_object.data.present_location}
-                    <p class="links">
-                        <label><button onclick = "updatePresentLocation();">Edit</button></label>
-                     </p>
-                    </td>
-              </td>
-
+                    <td>${response_object.data.delivery_status}</td>
+                    <td >${response_object.data.present_location}</td>
             </tr>`;
 
         document.getElementById('parcelDetail').innerHTML = output;
@@ -71,72 +61,4 @@ if(/admindetail.html/.test(window.location.href)){
     }
     });
   }
-
-function updateStatus(){
-    let parcel_url = window.location.href
-    let url = new URL(parcel_url)
-    let parcel_id = url.searchParams.get("parcel")
-    var new_status = window.prompt("Enter new status")
-
-    fetch('http://127.0.0.1:5000/api/v2/parcels/'+parcel_id+'/status/', {
-        method: 'PUT',
-        headers: {
-            'Accept': 'application/json',
-            'Content-type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-        cache: 'no-cache',
-        body: JSON.stringify({
-            delivery_status: new_status
-        })
-
-    })
-    .then((res) => res.json())
-    .then((response_object) => {
-        console.log(response_object);
-
-        if(response_object.message === 'Status has been updated successfully'){
-            document.getElementById('statusUpdate').innerHTML = new_status
-            alert(response_object.message)
-        }
-        else{
-            alert(response_object.error_message)
-        }
-
-    })
-}
-
-function updatePresentLocation(){
-    let parcel_url = window.location.href
-    let url = new URL(parcel_url)
-    let parcel_id = url.searchParams.get("parcel")
-    var new_location = window.prompt("Enter new location")
-    console.log(parcel_id);
-
-    fetch('http://127.0.0.1:5000/api/v2/parcels/'+parcel_id+'/presentLocation/', {
-        method: 'PUT',
-        headers: {
-            'Accept': 'application/json',
-            'Content-type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('accessToken')}`,
-        },
-        cache: 'no-cache',
-        body: JSON.stringify({
-            present_location: new_location
-        })
-
-    })
-    .then((res) => res.json())
-    .then((response_object) => {
-        console.log(response_object);
-        if(response_object.message === 'Present location has been updated successfully'){
-            document.getElementById('locationUpdate').innerHTML = new_location
-            alert(response_object.message)
-        }
-        else{
-            alert(response_object.error_message)
-        }
-
-    })
-}
 
