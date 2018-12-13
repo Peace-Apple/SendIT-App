@@ -146,20 +146,6 @@ div.main-content p button{
 	border-radius: 5px;
 	background-color: #05386B;
 }
-div.inner-content p label button{
-    border: 1px solid maroon;
-	padding: 5px 10px;
-	border-radius: 5px;
-	width: 50%;
-	background-color: #05386B;
-}
-div.inner p label button{
-    border: 1px solid maroon;
-	padding: 5px 10px;
-	border-radius: 5px;
-	width: 50%;
-	background-color: #05386B;
-}
 div.main-content p button a{
     color: white;
     text-decoration:none;
