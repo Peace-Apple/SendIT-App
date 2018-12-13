@@ -140,6 +140,9 @@ div.main-content{
 	margin-right: 100px;
 	background-color: antiquewhite;
 }
+div.main-content h3{
+    color: maroon;
+}
 div.main-content p button{
     border: 1px solid maroon;
 	padding: 8px 10px;
