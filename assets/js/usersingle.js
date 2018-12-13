@@ -25,36 +25,18 @@ if(/detail.html/.test(window.location.href)){
         console.log(response_object.data);
         console.log(response_object.data.parcel_id);
 
-        let output = `
-
-            <tr id="parcels_head">
-                <th>Senders Name</th>
-                <th>Receivers Name</th>
-                <th>Pickup Location</th>
-                <th>Destination</th>
-                <th>Weight</th>
-                <th>Order Date</th>
-                <th>Delivery Status</th>
-                <th>Present Location</th>
-            </tr>
-
-        `;
+        let output = '';
             output += `
 
-                <tr id="parcels">
-                    <td>${response_object.data.user_name}</td>
-                    <td>${response_object.data.receivers_name}</td>
-                    <td>${response_object.data.pickup_location}</td>
-                    <td>${response_object.data.destination}
-                    </td>
-                    <td>${response_object.data.weight}</td>
-                    <td>${response_object.data.order_date}</td>
-                    <td>${response_object.data.delivery_status}
-                    </td>
-                    <td>${response_object.data.present_location}</td>
-              </td>
-
-            </tr>`;
+                    <tr><td><b>Sender: </b>${response_object.data.user_name}</td></tr>
+                    <tr><td><b>Receiver: </b>${response_object.data.receivers_name}</td></tr>
+                    <tr><td><b>Pickup Location: </b>${response_object.data.pickup_location}</td></tr>
+                    <tr><td><b>Destination: </b>${response_object.data.destination}</td></tr>
+                    <tr><td><b>Weight: </b>${response_object.data.weight}</td></tr>
+                    <tr><td><b>Order Date: </b>${response_object.data.order_date}</td></tr>
+                    <tr><td><b>Delivery Status: </b>${response_object.data.delivery_status}</td></tr>
+                    <tr><td><b>Present Location: </b>${response_object.data.present_location}</td></tr>
+                    `;
 
         document.getElementById('parcelDetail').innerHTML = output;
 
