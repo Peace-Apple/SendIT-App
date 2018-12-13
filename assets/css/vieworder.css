@@ -46,30 +46,6 @@
     color: white;
     text-decoration: none;
 }
-.detail{
-    padding: 7px;
-}
-.detail tr td{
-    padding: 10px;
-}
-.img-detail img{
-    width: 400px;
-	height: 400px;
-	float: left;
-	margin-left: 20px;
-	position: relative;
-	border-radius: 5px;
-}
-.detail-content{
-    background-color: white;
-	border: 1px solid silver;
-	padding: 20px;
-    margin: 5px;
-    border-radius: 10px;
-    box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
-    width: 480px;
-    height: 450px;
-}
 div.user_profile div{
     float: right;
     margin-right: 830px;
